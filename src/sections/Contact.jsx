@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { FaEnvelope, FaPhone, FaGithub, FaLinkedin } from 'react-icons/fa'
 import { useState } from 'react'
+import emailjs from '@emailjs/browser'
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -9,6 +10,11 @@ function Contact() {
     message: ''
   })
   const [status, setStatus] = useState('')
+
+  // Replace these with your actual EmailJS credentials
+  const SERVICE_ID = 'service_kan76xr'
+  const TEMPLATE_ID = 'template_r7qerwy'
+  const PUBLIC_KEY = 'oWF47aK1m3Y5Wv9Y9'
 
   const handleChange = (e) => {
     setFormData({
@@ -21,22 +27,36 @@ function Contact() {
     e.preventDefault()
     setStatus('sending')
     
-    // TODO: We'll add the actual email sending logic later with serverless function
-    // For now, just simulate submission
-    setTimeout(() => {
-      console.log('Form submitted:', formData)
+    try {
+      // Send email using EmailJS
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        PUBLIC_KEY
+      )
+      
       setStatus('success')
       setFormData({ name: '', email: '', message: '' })
       
+      // Reset status after 3 seconds
       setTimeout(() => setStatus(''), 3000)
-    }, 1000)
+    } catch (error) {
+      console.error('Email send failed:', error)
+      setStatus('error')
+      setTimeout(() => setStatus(''), 3000)
+    }
   }
 
   const contactInfo = [
-    { icon: <FaEnvelope />, label: 'Email', value: 'sreeyash007@gmail.com', link: 'mailto:sreeyash007@gmail.com' },
-    { icon: <FaPhone />, label: 'Phone', value: '+1 (678) 920-6331', link: 'tel:+16789206331' },
-    { icon: <FaGithub />, label: 'GitHub', value: 'github.com/R1nneC0de', link: 'https://github.com/R1nneC0de' },
-    { icon: <FaLinkedin />, label: 'LinkedIn', value: 'linkedin.com/in/skyashas30', link: 'https://linkedin.com/in/skyashas30' },
+    { icon: <FaEnvelope />, label: 'Email', value: 'your.email@example.com', link: 'mailto:your.email@example.com' },
+    { icon: <FaPhone />, label: 'Phone', value: '+1 (123) 456-7890', link: 'tel:+11234567890' },
+    { icon: <FaGithub />, label: 'GitHub', value: 'github.com/yourusername', link: 'https://github.com/yourusername' },
+    { icon: <FaLinkedin />, label: 'LinkedIn', value: 'linkedin.com/in/yourusername', link: 'https://linkedin.com/in/yourusername' },
   ]
 
   return (
@@ -145,15 +165,22 @@ function Contact() {
                 <motion.button
                   type="submit"
                   disabled={status === 'sending'}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: status === 'sending' ? 1 : 1.05 }}
+                  whileTap={{ scale: status === 'sending' ? 1 : 0.95 }}
                   className={`w-full py-4 rounded-lg font-bold text-white transition-all duration-300 ${
                     status === 'sending' 
                       ? 'bg-spotify-gray cursor-not-allowed' 
+                      : status === 'success'
+                      ? 'bg-spotify-green'
+                      : status === 'error'
+                      ? 'bg-red-600'
                       : 'bg-gradient-to-r from-lilac to-spotify-green hover:shadow-lg'
                   }`}
                 >
-                  {status === 'sending' ? 'Sending...' : status === 'success' ? '✓ Message Sent!' : 'Send Message'}
+                  {status === 'sending' ? 'Sending...' : 
+                   status === 'success' ? '✓ Message Sent!' : 
+                   status === 'error' ? '✗ Failed to Send' :
+                   'Send Message'}
                 </motion.button>
               </form>
             </motion.div>
