@@ -12,9 +12,9 @@ function Contact() {
   const [status, setStatus] = useState('')
 
   // Replace these with your actual EmailJS credentials
-  const SERVICE_ID = 'service_kan76xr'
-  const TEMPLATE_ID = 'template_r7qerwy'
-  const PUBLIC_KEY = 'oWF47aK1m3Y5Wv9Y9'
+  const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+  const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+  const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
   const handleChange = (e) => {
     setFormData({
@@ -53,10 +53,10 @@ function Contact() {
   }
 
   const contactInfo = [
-    { icon: <FaEnvelope />, label: 'Email', value: 'your.email@example.com', link: 'mailto:your.email@example.com' },
-    { icon: <FaPhone />, label: 'Phone', value: '+1 (123) 456-7890', link: 'tel:+11234567890' },
-    { icon: <FaGithub />, label: 'GitHub', value: 'github.com/yourusername', link: 'https://github.com/yourusername' },
-    { icon: <FaLinkedin />, label: 'LinkedIn', value: 'linkedin.com/in/yourusername', link: 'https://linkedin.com/in/yourusername' },
+    { icon: <FaEnvelope />, label: 'Email', value: 'sreeyash007@gmail.com', link: 'mailto:sreeyash007@gmail.com' },
+    { icon: <FaPhone />, label: 'Phone', value: '678-920-6331', link: 'tel:+16789206331' },
+    { icon: <FaGithub />, label: 'GitHub', value: 'github.com/R1nneC0de', link: 'https://github.com/R1nneC0de' },
+    { icon: <FaLinkedin />, label: 'LinkedIn', value: 'linkedin.com/in/SKYashas30', link: 'https://linkedin.com/in/SKYashas30' },
   ]
 
   return (
