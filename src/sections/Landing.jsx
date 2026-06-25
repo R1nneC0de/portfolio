@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { FaDownload } from 'react-icons/fa'
 
 function Landing() {
   return (
@@ -15,7 +16,7 @@ function Landing() {
         >
           <h1 className="text-6xl md:text-8xl font-bold mb-4">
             <span className="bg-gradient-to-r from-lilac-light via-lilac to-spotify-green bg-clip-text text-transparent">
-              SKYashas
+              Sree Yashas Kuchi
             </span>
           </h1>
           
@@ -25,14 +26,14 @@ function Landing() {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="text-xl md:text-2xl text-spotify-lightGray mb-8"
           >
-            Computer Science Student | Full Stack Developer
+            Computer Science Student | Full Stack Developer | AI/ML Enthusiast
           </motion.p>
           
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="flex gap-4 justify-center"
+            className="flex gap-4 justify-center flex-wrap"
           >
             <button 
               onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
@@ -40,9 +41,18 @@ function Landing() {
             >
               View Projects
             </button>
+            
+            <a
+              href="/resume.pdf"
+              download="Sree_Yashas_Kuchi_Resume.pdf"
+              className="px-8 py-3 border-2 border-spotify-green text-spotify-green hover:bg-spotify-green hover:text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 flex items-center gap-2"
+            >
+              <FaDownload />
+              Download Resume
+            </a>
             <button 
               onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-3 border-2 border-spotify-green text-spotify-green hover:bg-spotify-green hover:text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105"
+              className="px-8 py-3 border-2 border-lilac text-lilac hover:bg-lilac hover:text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105"
             >
               Contact Me
             </button>

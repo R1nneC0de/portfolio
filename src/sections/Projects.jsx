@@ -7,32 +7,36 @@ function Projects() {
 
   const projects = [
     {
-      name: 'Project One',
-      description: 'A full-stack web application built with React and Node.js. Features user authentication, real-time updates, and responsive design.',
-      tech: ['React', 'Node.js', 'MongoDB', 'Tailwind'],
-      github: 'https://github.com/yourusername/project-one',
-      icon: '🚀',
+      name: 'SwiftPaws',
+      description: 'Containerized backend exposing 28+ REST endpoints with JWT role-based access control, rate limiting, and a WebSocket real-time dashboard, applying microservices and SOA principles (101/101 passing tests). Features an on-premises facial-recognition check-in service (InsightFace, 512-dim embeddings, cosine similarity) with sub-2s check-in and zero external API dependencies, plus AES-128-CBC (Fernet) biometric encryption and GDPR-compliant self-deletion.',
+      tech: ['Python', 'FastAPI', 'PostgreSQL', 'Docker', 'WebSockets', 'JWT', 'Flutter'],
+      github: 'https://github.com/ridasyeda66/SwiftPaws',
+      icon: '🐾',
+      date: 'Jan – May 2026'
     },
     {
-      name: 'Project Two',
-      description: 'Machine learning model for image classification using CNNs. Achieved 95% accuracy on test dataset.',
-      tech: ['Python', 'TensorFlow', 'Keras', 'OpenCV'],
-      github: 'https://github.com/yourusername/project-two',
-      icon: '🤖',
+      name: 'SpotandtracK',
+      description: 'Full-stack monitoring platform that diffs Spotify playlist snapshots to detect track availability changes, using a BullMQ + Redis job queue with scheduled sweeps, exponential backoff, and automatic rate-limit handling. Implements Spotify OAuth 2.0 with AES-256-GCM token encryption and a distributed-lock refresh flow that prevents race conditions across concurrent jobs, with end-to-end type safety across the stack.',
+      tech: ['Next.js', 'Node.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'BullMQ', 'Redis', 'OAuth 2.0'],
+      github: 'https://github.com/R1nneC0de/SpotandtracK',
+      icon: '🎵',
+      date: 'Feb 2026'
     },
     {
-      name: 'Project Three',
-      description: 'Mobile-first e-commerce platform with payment integration and inventory management system.',
-      tech: ['React Native', 'Firebase', 'Stripe API'],
-      github: 'https://github.com/yourusername/project-three',
-      icon: '🛒',
+      name: 'MoneySpeaks',
+      description: 'Real-time scam-detection system that transcribes live calls and classifies risk through a multi-stage streaming pipeline with under 2s end-to-end latency. Integrates AI-vs-human voice detection (wav2vec2) and behavioral analysis via Gemini, improving detection confidence by 35% and cutting false negatives by 28% with WebRTC VAD timing signals.',
+      tech: ['Python', 'FastAPI', 'React', 'WebSockets', 'wav2vec2', 'Gemini', 'WebRTC VAD'],
+      github: 'https://github.com/R1nneC0de/MoneySpeaks',
+      icon: '🛡️',
+      date: 'Mar 2026'
     },
     {
-      name: 'Project Four',
-      description: 'Data visualization dashboard for analyzing social media trends using D3.js and REST APIs.',
-      tech: ['React', 'D3.js', 'Express', 'PostgreSQL'],
-      github: 'https://github.com/yourusername/project-four',
-      icon: '📊',
+      name: 'CityTrotter',
+      description: 'Urban-planning web tool delivering instant impact analysis across 7 domains (zoning, traffic, transit, schools, infrastructure, economics), backed by geospatial queries on PostGIS. Integrates Mapbox visualization and Gemini-generated feasibility reports, reducing preliminary study time by 60% and returning full analyses in 5–10 seconds.',
+      tech: ['React', 'Vite', 'FastAPI', 'PostgreSQL/PostGIS', 'Mapbox GL', 'Gemini'],
+      github: 'https://github.com/R1nneC0de/CityTrotter',
+      icon: '🏙️',
+      date: 'Nov 2025'
     },
   ]
 
@@ -47,7 +51,7 @@ function Projects() {
         >
           <h2 className="text-5xl font-bold text-lilac mb-12 text-center">Projects</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
@@ -79,7 +83,7 @@ function Projects() {
                   {/* Folder front face */}
                   <div className="h-full flex flex-col items-center justify-center p-8">
                     <motion.div 
-                      className="text-8xl mb-6"
+                      className="text-7xl mb-4"
                       animate={{ 
                         scale: hoveredProject === index ? 0.8 : 1,
                         y: hoveredProject === index ? -20 : 0 
@@ -88,8 +92,8 @@ function Projects() {
                     >
                       {project.icon}
                     </motion.div>
-                    <h3 className="text-3xl font-bold text-white text-center">{project.name}</h3>
-                    <p className="text-spotify-lightGray mt-2 text-sm">Click to view details</p>
+                    <h3 className="text-2xl font-bold text-white text-center mb-2">{project.name}</h3>
+                    <p className="text-spotify-lightGray text-sm">{project.date}</p>
                   </div>
                 </motion.div>
                 
@@ -102,15 +106,15 @@ function Projects() {
                     y: hoveredProject === index ? 0 : 40,
                   }}
                   transition={{ duration: 0.4, ease: 'easeOut' }}
-                  className="absolute inset-0 bg-gradient-to-br from-spotify-black via-spotify-darkGray to-black backdrop-blur-md rounded-2xl p-8 flex flex-col justify-between border-2 border-spotify-green/50 shadow-2xl"
+                  className="absolute inset-0 bg-gradient-to-br from-spotify-black via-spotify-darkGray to-black backdrop-blur-md rounded-2xl p-6 flex flex-col justify-between border-2 border-spotify-green/50 shadow-2xl overflow-y-auto"
                   style={{ 
                     zIndex: hoveredProject === index ? 10 : -1,
                     pointerEvents: hoveredProject === index ? 'auto' : 'none'
                   }}
                 >
                   <div>
-                    <h3 className="text-3xl font-bold text-lilac mb-4">{project.name}</h3>
-                    <p className="text-spotify-lightGray mb-6 text-base leading-relaxed">
+                    <h3 className="text-2xl font-bold text-lilac mb-3">{project.name}</h3>
+                    <p className="text-spotify-lightGray mb-4 text-sm leading-relaxed">
                       {project.description}
                     </p>
                     
@@ -119,7 +123,7 @@ function Projects() {
                       {project.tech.map((tech, i) => (
                         <span
                           key={i}
-                          className="px-4 py-2 bg-lilac/20 text-lilac text-sm font-medium rounded-full border border-lilac/40"
+                          className="px-3 py-1 bg-lilac/20 text-lilac text-xs font-medium rounded-full border border-lilac/40"
                         >
                           {tech}
                         </span>
@@ -136,7 +140,7 @@ function Projects() {
                     whileTap={{ scale: 0.95 }}
                     className="flex items-center justify-center gap-3 bg-spotify-green hover:bg-spotify-green/80 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300"
                   >
-                    <FaGithub className="text-2xl" />
+                    <FaGithub className="text-xl" />
                     <span>View on GitHub</span>
                     <FaExternalLinkAlt className="text-sm" />
                   </motion.a>

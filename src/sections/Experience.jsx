@@ -4,26 +4,25 @@ import { FaBriefcase } from 'react-icons/fa'
 function Experience() {
   const experiences = [
     {
-      title: 'Software Engineering Intern',
-      company: 'Company Name',
-      period: 'June 2024 - August 2024',
+      title: 'Data Engineering Intern',
+      company: 'Sysco / Techwave',
+      location: 'Houston, TX',
+      period: 'June 2025 – August 2025',
       description: [
-        'Developed and maintained web applications using React and Node.js',
-        'Collaborated with cross-functional teams to deliver features',
-        'Optimized database queries, improving performance by 40%',
+        'Engineered a reusable data migration engine in Python for Sysco’s ERP-to-Workday transition, applying object-oriented design patterns and enterprise ETL practices that cut future project timelines by 30%',
+        'Developed validation scripts that raised record-match precision to 97%, enforcing data consistency between legacy and modern systems through rigorous test coverage and defensive error handling',
       ],
     },
     {
-      title: 'Research Assistant',
-      company: 'University Name',
-      period: 'January 2024 - May 2024',
+      title: 'STEM Tutor',
+      company: 'Georgia State University',
+      location: 'Atlanta, GA',
+      period: 'August 2025 – December 2025',
       description: [
-        'Conducted research on machine learning algorithms',
-        'Published findings in academic conference',
-        'Implemented ML models using Python and TensorFlow',
+        'Led tutoring for Calculus I/II, Linear Algebra, and Probability & Statistics, supporting 15+ students weekly',
+        'Drove a 30% increase in average student grades by translating complex technical concepts into clear, accessible explanations',
       ],
     },
-    // Add more experiences as needed
   ]
 
   return (
@@ -64,12 +63,13 @@ function Experience() {
                   className="bg-spotify-darkGray p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
                 >
                   <h3 className="text-2xl font-bold text-white mb-2">{exp.title}</h3>
-                  <h4 className="text-lg text-lilac-light mb-2">{exp.company}</h4>
+                  <h4 className="text-lg text-lilac-light mb-1">{exp.company}</h4>
+                  <p className="text-sm text-spotify-lightGray/70 mb-1">{exp.location}</p>
                   <p className="text-sm text-spotify-lightGray mb-4">{exp.period}</p>
                   
                   <ul className={`space-y-2 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
                     {exp.description.map((item, i) => (
-                      <li key={i} className="text-spotify-lightGray">
+                      <li key={i} className="text-spotify-lightGray text-sm leading-relaxed">
                         • {item}
                       </li>
                     ))}

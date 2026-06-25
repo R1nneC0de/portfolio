@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion'
-import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaFileAlt } from 'react-icons/fa'
 
 function About() {
   const socialLinks = [
     { icon: <FaGithub />, url: 'https://github.com/R1nneC0de', label: 'GitHub' },
-    { icon: <FaLinkedin />, url: 'https://linkedin.com/in/skyashas30', label: 'LinkedIn' },
+    { icon: <FaLinkedin />, url: 'https://linkedin.com/in/SKYashas30', label: 'LinkedIn' },
+    { icon: <FaEnvelope />, url: 'mailto:sreeyash007@gmail.com', label: 'Email' },
   ]
 
   return (
@@ -20,17 +21,49 @@ function About() {
           
           <div className="bg-spotify-gray/50 rounded-lg p-8 backdrop-blur-sm">
             <p className="text-lg text-spotify-lightGray leading-relaxed mb-6">
-              I'm a Computer Science student passionate about building innovative solutions 
-              and learning new technologies. I love turning ideas into reality through code, 
-              whether it's developing full-stack applications, exploring AI/ML, or creating 
-              interactive web experiences.
+              I'm a Computer Science student at Georgia State University (3.92 GPA, graduating May 2026),
+              passionate about building reliable systems at the intersection of full-stack development and
+              AI/ML. As a Data Engineering Intern at Sysco / Techwave, I built a reusable Python data
+              migration engine for an ERP-to-Workday transition, cutting future project timelines by 30%.
+            </p>
+
+            <p className="text-lg text-spotify-lightGray leading-relaxed mb-6">
+              My toolkit spans backend frameworks like Spring Boot, FastAPI, and Node.js/Express; React,
+              Next.js, and Flutter on the frontend; and distributed-systems building blocks such as message
+              queues (BullMQ), Redis, caching, and rate limiting. I work day to day with PostgreSQL, Docker,
+              and cloud platforms (AWS, GCP), and enjoy turning complex problems into clean, type-safe solutions.
+            </p>
+
+            <p className="text-lg text-spotify-lightGray leading-relaxed mb-8">
+              When I'm not coding, I'm exploring new developments in AI/ML, shipping side projects that push
+              my technical boundaries, or tutoring students in Calculus, Linear Algebra, and Statistics at
+              Georgia State University.
             </p>
             
-            <p className="text-lg text-spotify-lightGray leading-relaxed mb-8">
-              When I'm not coding, you can find me exploring the latest tech trends, 
-              contributing to open-source projects, or working on personal projects that 
-              push my boundaries and expand my skill set.
-            </p>
+            {/* Resume Buttons */}
+            <div className="flex gap-4 justify-center mb-8 flex-wrap">
+              <motion.a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-6 py-3 bg-lilac hover:bg-lilac-light text-white font-semibold rounded-lg transition-all duration-300"
+              >
+                <FaFileAlt />
+                View Resume
+              </motion.a>
+              <motion.a
+                href="/resume.pdf"
+                download="Sree_Yashas_Kuchi_Resume.pdf"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-6 py-3 border-2 border-spotify-green text-spotify-green hover:bg-spotify-green hover:text-white font-semibold rounded-lg transition-all duration-300"
+              >
+                <FaDownload />
+                Download Resume
+              </motion.a>
+            </div>
             
             {/* Social Links */}
             <div className="flex gap-6 justify-center">

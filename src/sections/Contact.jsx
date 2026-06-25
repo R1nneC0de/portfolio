@@ -11,7 +11,7 @@ function Contact() {
   })
   const [status, setStatus] = useState('')
 
-  // Replace these with your actual EmailJS credentials
+  // Load from environment variables
   const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
   const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
   const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
@@ -28,7 +28,6 @@ function Contact() {
     setStatus('sending')
     
     try {
-      // Send email using EmailJS
       await emailjs.send(
         SERVICE_ID,
         TEMPLATE_ID,
@@ -42,8 +41,6 @@ function Contact() {
       
       setStatus('success')
       setFormData({ name: '', email: '', message: '' })
-      
-      // Reset status after 3 seconds
       setTimeout(() => setStatus(''), 3000)
     } catch (error) {
       console.error('Email send failed:', error)
@@ -60,8 +57,8 @@ function Contact() {
   ]
 
   return (
-    <section id="contact" className="min-h-screen flex items-center justify-center py-20">
-      <div className="max-w-6xl mx-auto px-4 w-full">
+    <section id="contact" className="min-h-screen flex items-center justify-center py-20 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 w-full relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
